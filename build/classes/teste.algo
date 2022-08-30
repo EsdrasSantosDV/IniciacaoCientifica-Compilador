@@ -1,0 +1,35 @@
+algoritmo "teste"
+var
+   x : inteiro
+   
+   funcao f(x : inteiro) : inteiro 
+   inicio
+      f <- x * x
+   fimfuncao
+   
+   procedimento p(y : inteiro)
+   inicio
+      x <- y
+   fimprocedimento
+
+   procedimento t(n : inteiro) 
+   var
+      x : inteiro
+   inicio
+      x <- n
+      escreva("X: ", x, " N: ", n)
+      se (n < 5) entao
+         t(n + 1)
+      fimse
+      escreva("X: ", x, " N: ", n)
+   fimprocedimento
+   
+inicio
+   leia(x)
+   escreva("Resultado para f(", x, "): ",f(x))
+   escreva("The best", " ", "World!")
+   escreva("Valor de x: ", x)
+   p(1)
+   escreva("Valor de x após p(1): ", x)
+   t(0)
+fimalgoritmo

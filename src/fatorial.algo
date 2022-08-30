@@ -1,0 +1,23 @@
+algoritmo "fatorial"
+var
+   n : inteiro
+   
+   funcao fat(n : inteiro) : inteiro
+   inicio
+      se ((n = 0) ou (n = 1)) entao
+         fat <- 1
+      senao
+         fat <- n * fat(n - 1)
+      fimse
+   fimfuncao
+
+inicio
+   escreva("Entre com um valor: ")
+   leia(n)
+   escreva("O fatorial de ", n, " é ", fat(n))
+   n <- 1
+   enquanto (n <= 5) faca
+      escreva("Valor de n: ", n)
+      n <- n + 1
+   fimenquanto
+fimalgoritmo

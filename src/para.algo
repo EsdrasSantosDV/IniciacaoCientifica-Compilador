@@ -1,0 +1,8 @@
+algoritmo "para"
+var
+   i : inteiro
+inicio
+   para i de 1 ate 10 passo 1 decrescente faca
+      escreva(i)
+   fimpara
+fimalgoritmo
