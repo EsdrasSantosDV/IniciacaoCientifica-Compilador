@@ -2,9 +2,13 @@
  * Módulo de Runtime do Algo
  */
 
+import java.awt.Component;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import swingExamples.NonModalDialogs;
 
 /**
  *
@@ -210,7 +214,7 @@ public class Runtime {
 
                         // Entrada de dados.
                         String text = JOptionPane.showInputDialog("Entre com o conteúdo para " + variavel.name, strValue);                
-
+                         //String text = NonModalDialogs.showNonModalInputDialog("Entre com o conteúdo para " + variavel.name, strValue);  
                         try {
                             if (variavel.getType() == Type.INTEIRO)
                                 variavel.value = Integer.parseInt(text);
@@ -231,7 +235,8 @@ public class Runtime {
                             break;
                         }    
                         catch (Exception e) {
-                            JOptionPane.showMessageDialog(FormPrincipal.getFrames()[0],"O valor informado para " + variavel.name + " é inválido! O valor deve ser do tipo " + variavel.getType().name() + ". Reentre com o valor.");
+                         //   JOptionPane.showMessageDialog(FormPrincipal.getFrames()[0],"O valor informado para " + variavel.name + " é inválido! O valor deve ser do tipo " + variavel.getType().name() + ". Reentre com o valor.");
+                            NonModalDialogs.showNonModalMessageDialog(FormPrincipal.getFrames()[0],"O valor informado para " + variavel.name + " é inválido! O valor deve ser do tipo " + variavel.getType().name() + ". Reentre com o valor.");
                         }
                     }
                 }
@@ -255,7 +260,29 @@ public class Runtime {
                     else
                         msg = msg + value;
                 }
-                JOptionPane.showMessageDialog(FormPrincipal.getFrames()[0], msg);
+               //JOptionPane.showMessageDialog(FormPrincipal.getFrames()[0], msg);
+               
+               
+               NonModalDialogs.showNonModalMessageDialog(FormPrincipal.getFrames()[0], msg);
+//                 NonModalDialogs.exectuteOnYesNoCancelConfirmDialog("Are you ready?",
+//				new Runnable() {
+//					// 'Yes' action
+//					public void run() {
+//						JOptionPane.showMessageDialog(null, "Let's go!");
+//					}
+//				}, new Runnable() {
+//					// 'No' action
+//					public void run() {
+//						JOptionPane.showMessageDialog(null,
+//								"I'll wait for you then.");
+//					}
+//				}, new Runnable() {
+//					// 'Cancel' action
+//					public void run() {
+//						JOptionPane.showMessageDialog(null, "Nevermind.");
+//					}
+//				});  
+    
             }
             else
             if (instrucao instanceof ParaStatement) {
