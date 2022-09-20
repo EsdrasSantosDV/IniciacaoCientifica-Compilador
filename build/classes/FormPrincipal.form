@@ -55,10 +55,18 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuTreeView">
               <Properties>
-                <Property name="text" type="java.lang.String" value="An&#xe1;lise Sint&#xe1;tica"/>
+                <Property name="text" type="java.lang.String" value="Run"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuTreeViewActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Stop">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Stop"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StopActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -95,8 +103,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jMensagem" alignment="1" pref="476" max="32767" attributes="0"/>
-          <Component id="jPainel" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPainel" alignment="0" pref="476" max="32767" attributes="0"/>
+          <Component id="jMensagem" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">

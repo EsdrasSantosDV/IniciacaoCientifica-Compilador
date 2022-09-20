@@ -143,6 +143,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuTreeView = new javax.swing.JMenuItem();
+        Stop = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -192,13 +193,21 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenuTreeView.setText("Análise Sintática");
+        jMenuTreeView.setText("Run");
         jMenuTreeView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuTreeViewActionPerformed(evt);
             }
         });
         jMenu2.add(jMenuTreeView);
+
+        Stop.setText("Stop");
+        Stop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StopActionPerformed(evt);
+            }
+        });
+        jMenu2.add(Stop);
 
         jMenuBar1.add(jMenu2);
 
@@ -211,8 +220,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jMensagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
-            .addComponent(jPainel)
+            .addComponent(jPainel, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(jMensagem)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -338,7 +347,12 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuTreeViewActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+      
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -362,6 +376,13 @@ public class FormPrincipal extends javax.swing.JFrame {
             txtFonte.setText("");
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StopActionPerformed
+       
+        
+        
+        
+    }//GEN-LAST:event_StopActionPerformed
 
     /**
      * @param args the command line arguments
@@ -426,6 +447,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Stop;
     private javax.swing.JTabbedPane jMensagem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

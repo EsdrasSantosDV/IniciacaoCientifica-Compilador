@@ -87,6 +87,7 @@ public class Compilador {
             if (!parser.erro) {
                 Runtime runtime = new Runtime();
                 runtime.run(parser.getStatements());
+               
             }
         }
     }
