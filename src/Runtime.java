@@ -421,9 +421,17 @@ public class Runtime implements KeyListener, ActionListener {
                     // Exige que os valores informados sejam consistentes com o tipo
                     while (true) {
                       
-                        String text = JOptionPane.showInputDialog("Entre com o conteúdo para " + variavel.name, strValue);                
-                     
+                       String text; 
+                       outputToJTextArea(jta, "Enter some input (press enter after inputting): ");
+                       text = getInputFromJTextArea(jta);
+                       System.out.println(text);
+                       System.out.println(""+text);
+                        //outputToJTextArea(jta, "Enter some input (press enter after inputting): ");
+                       // String input = getInputFromJTextArea(jta);
+                        //System.out.println(input);
+                        //outputToJTextArea(jta, "User input was: " + input + "\n\n");
                         try {
+                            
                             if (variavel.getType() == Type.INTEIRO)
                                 variavel.value = Integer.parseInt(text);
                             else
@@ -443,8 +451,8 @@ public class Runtime implements KeyListener, ActionListener {
                             break;
                         }    
                         catch (Exception e) {
-                           JOptionPane.showMessageDialog(FormPrincipal.getFrames()[0],"O valor informado para " + variavel.name + " é inválido! O valor deve ser do tipo " + variavel.getType().name() + ". Reentre com o valor.");
-                        
+                          //JOptionPane.showMessageDialog(FormPrincipal.getFrames()[0],"O valor informado para " + variavel.name + " é inválido! O valor deve ser do tipo " + variavel.getType().name() + ". Reentre com o valor.");
+                           outputToJTextArea(jta, "O valor informado para " + variavel.name + " é inválido! O valor deve ser do tipo " + variavel.getType().name() + ". Reentre com o valor.");
                             
                         }
                     }
@@ -554,8 +562,8 @@ public class Runtime implements KeyListener, ActionListener {
                     else
                     {
                           //((ParaStatement) instrucao).variavel=(TabSimRecord) ((ParaStatement) instrucao).inicial;
-                         Object value = evaluate(((ParaStatement)instrucao).inicial);
-                         ((ParaStatement) instrucao).variavel.value=value;
+                       Object value = evaluate(((ParaStatement)instrucao).inicial);
+                       ((ParaStatement) instrucao).variavel.value=value;
                          
                        System.out.println("VALOR DA VARIAVEL C"+ ((ParaStatement) instrucao).ate);
                        
@@ -675,6 +683,6 @@ public class Runtime implements KeyListener, ActionListener {
         cfjp.createAndShowGUI();
        
         cfjp.begin(statements);
-    } // end of main
+    } 
 
-} // end of ConsoleForJARPrograms
+} 
