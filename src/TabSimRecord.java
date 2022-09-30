@@ -3,10 +3,7 @@
  */
 import java.util.ArrayList;
 
-/**
- *
- * @author roger
- */
+
 public class TabSimRecord {
     // Nada
     public static final int NONE            = -1;   // Nada

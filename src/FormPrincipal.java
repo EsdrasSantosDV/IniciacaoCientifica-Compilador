@@ -74,24 +74,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         txtFonte.setCodeFoldingEnabled(true);
         
         
-/*        
-        BufferedReader r;
-  try {
-    r = new BufferedReader(new FileReader("./exemplo.algo"));
-    txtFonte.read(r, null);
-    r.close();
-    txtFonte.setCaretPosition(0);
-    txtFonte.discardAllEdits();
-    isModified = false;
-  } catch (RuntimeException re) {
-    throw re; // FindBugs
-  } catch (Exception e) { // Never happens
-    txtFonte.setText("Type here to see syntax highlighting");
-  }
-*/        
-        
-//  txtFonte.write(out);
-  
+
         spFonte = new RTextScrollPane(txtFonte);
         spFonte.setName("Programa Fonte");
         jPainel.add(spFonte, 0);
@@ -106,21 +89,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         
         jPainel.setSelectedIndex(0);
 
-/*        
-        String texto =  "algoritmo \"teste\"\n" +
-                        "var\n" +
-                        "   x, y : inteiro\n" +
-                        "   \n" + 
-                        "   procedimento p(x, y : inteiro; z : real)\n" +
-                        "   var\n" +
-                        "       a, b : real\n" +
-                        "   inicio\n" +
-                        "   fimprocedimento\n\n" +
-                        "inicio\n" +
-                        "fimalgoritmo";
-        
-        txtFonte.setText(texto);                
-*/
+
     }
 
     /**
@@ -255,46 +224,6 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
 
 
-/*
-            //System.out.println( "You chose to open this file: " +
-            //                    fileChooser.getSelectedFile().getAbsolutePath());
-            BufferedReader bufferRead = null;
-            try {
-		bufferRead = new BufferedReader(new InputStreamReader(new FileInputStream(fileChooser.getSelectedFile().getAbsolutePath())));
-            }
-            catch (FileNotFoundException e) {
-		System.out.println(e);
-            }
-			
-            String line = null;
-		
-            try {
-		line = bufferRead.readLine();
-            }
-            catch (Exception e) {
-            	System.out.println(e);
-            }
-		
-            String input = "";
-		
-            while(line != null) {
-                input += line + "\n";
-		try {
-                    line = bufferRead.readLine();
-		}
-		catch (Exception e) {
-                    System.out.println(e);
-		}
-            }
-		
-            try {
-		bufferRead.close();
-            }
-            catch (Exception e) {
-		System.out.println(e);
-            }
-            txtFonte.setText(input);
-*/
         }
     }//GEN-LAST:event_jOpenActionPerformed
 

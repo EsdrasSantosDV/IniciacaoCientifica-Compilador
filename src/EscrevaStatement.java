@@ -3,10 +3,7 @@
  */
 import java.util.ArrayList;
 
-/**
- *
- * @author roger
- */
+
 // Escreva() ou Escreval()
 public class EscrevaStatement {
     public static final int TYPE_ESCREVA = 1;       // Usado quando é um escreva()

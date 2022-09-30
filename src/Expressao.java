@@ -2,11 +2,7 @@
  * Contém uma expressão ou um operando.
  */
 
-/**
- *
- * @author roger
- * 
- */
+
 public class Expressao {
     // As constantes abaixo são usadas para o typeNode, ou seja, se é um operador ou um operando.
     // Constantes para identificação do operando

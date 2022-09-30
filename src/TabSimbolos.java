@@ -4,10 +4,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- *
- * @author roger
- */
+
 public class TabSimbolos {
     public Map<String, TabSimRecord>    records;            // Registro das entradas na tabela de símbolos
     public TabSimbolos                  tabSimPai;          // Tabela de símbolos pai

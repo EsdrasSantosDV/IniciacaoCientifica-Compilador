@@ -2,10 +2,7 @@
  * Tipos de dados utilizados
  */
 
-/**
- *
- * @author roger
- */
+
 public enum Type {
     NONE,       // Tipo indefinido
     INTEIRO,    // Tipo inteiro

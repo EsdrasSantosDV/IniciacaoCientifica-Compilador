@@ -2,10 +2,7 @@
  * Enquanto..fimenquanto
  */
 import java.util.ArrayList;
-/**
- *
- * @author roger
- */
+
 // Enquanto..fimenquanto
 public class EnquantoStatement {
     public Object  expressao;    // Expressão

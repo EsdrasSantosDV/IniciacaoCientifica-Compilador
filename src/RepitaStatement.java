@@ -2,10 +2,7 @@
  * Repita..até
  */
 import java.util.ArrayList;
-/**
- *
- * @author roger
- */
+
 // Repita..até
 public class RepitaStatement {
     public Object  expressao;    // Expressão
