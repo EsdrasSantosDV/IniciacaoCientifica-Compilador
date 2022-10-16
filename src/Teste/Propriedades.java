@@ -19,13 +19,15 @@ import org.fife.ui.rtextarea.RTextScrollPane;
  *
  * @author Pichau
  */
-public class TelaPrincipal extends javax.swing.JFrame {
+public class Propriedades extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaPrincipal
      */
-    public TelaPrincipal() {
+    RSyntaxTextArea textArea = new RSyntaxTextArea(20,60);
+    public Propriedades() {
         initComponents();
+        
         RSyntax();
     }
 
@@ -38,36 +40,140 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        Exampletext = new javax.swing.JPanel();
+        CancelarPropriedades = new javax.swing.JButton();
+        Negrito = new javax.swing.JCheckBox();
+        AplicarPropriedades1 = new javax.swing.JButton();
+        Sublinhado = new javax.swing.JCheckBox();
+        Itálico = new javax.swing.JCheckBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList2 = new javax.swing.JList<>();
+        LabelSize = new javax.swing.JLabel();
+        LabelFont1 = new javax.swing.JLabel();
+        SizeBox = new javax.swing.JComboBox<>();
+        ChangeFontBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.CardLayout());
+        Exampletext.setLayout(new java.awt.CardLayout());
+
+        CancelarPropriedades.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        CancelarPropriedades.setText("Cancelar");
+
+        Negrito.setText("Negrito");
+
+        AplicarPropriedades1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        AplicarPropriedades1.setText("Aplicar");
+
+        Sublinhado.setText("Sublinhado");
+        Sublinhado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SublinhadoActionPerformed(evt);
+            }
+        });
+
+        Itálico.setText("Itálico");
+
+        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(jList2);
+
+        LabelSize.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        LabelSize.setText("Size");
+
+        LabelFont1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        LabelFont1.setText("Change Font");
+
+        SizeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        ChangeFontBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Exampletext, javax.swing.GroupLayout.PREFERRED_SIZE, 863, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 21, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Itálico)
+                                    .addComponent(Sublinhado)
+                                    .addComponent(Negrito)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(16, 16, 16)
+                                .addComponent(LabelFont1)
+                                .addGap(18, 18, 18)
+                                .addComponent(ChangeFontBox, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LabelSize)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(SizeBox, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(34, 34, 34))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(AplicarPropriedades1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(CancelarPropriedades, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LabelFont1)
+                            .addComponent(ChangeFontBox, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addComponent(LabelSize, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(SizeBox)
+                                .addGap(68, 68, 68)))
+                        .addComponent(Negrito)
+                        .addGap(18, 18, 18)
+                        .addComponent(Itálico)
+                        .addGap(18, 18, 18)
+                        .addComponent(Sublinhado)))
+                .addGap(44, 44, 44)
+                .addComponent(Exampletext, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CancelarPropriedades, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AplicarPropriedades1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void SublinhadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SublinhadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SublinhadoActionPerformed
+
     public void RSyntax()
     {
-        RSyntaxTextArea textArea = new RSyntaxTextArea(20,60);
-        textArea.setFont(new Font("Monospaced",Font.PLAIN,20));
+        
+        textArea.setFont(new Font("Monospaced",Font.BOLD,20));
         
         //SYNTAX STYLE JAVA SE FOR UMA LINGUAGEM JA DEFINIDA
         //textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
@@ -87,14 +193,61 @@ public class TelaPrincipal extends javax.swing.JFrame {
         sp.getGutter().setLineNumberColor(Color.RED);
         sp.getGutter().setLineNumberFont(new Font("Monospaced",Font.BOLD,20));
         sp.getGutter().setBorderColor(Color.yellow);
-        jPanel1.add(sp);
+        Exampletext.add(sp);
         
         //MUDAR A COR
+        
+        
         SyntaxScheme esquema=textArea.getSyntaxScheme();
         //MUDAR O TEMA DE UM CERTO AGRUPAMENTO
         esquema.getStyle(Token.RESERVED_WORD).foreground=Color.BLACK;
         esquema.getStyle(Token.COMMENT_MULTILINE).foreground=Color.decode("#A10C0C");
         
+
+        esquema.getStyle(Token.DATA_TYPE).foreground=Color.RED;
+      
+        textArea.setText("/*\n" +
+"   Algoritmo de exemplo para teste de compilação\n" +
+"*/\n" +
+"algoritmo \"exemplo\"\n" +
+"var\n" +
+"	x, y, z : inteiro\n" +
+"	w :	real\n" +
+"	\n" +
+"	funcao f(a, b : inteiro; c : real) : real  // Função f()\n" +
+"	inicio\n" +
+"	   f <- a * b * c\n" +
+"	fimfuncao\n" +
+"{ Comentário estilo Pascal\n" +
+"  ------------------------\n" +
+"}\n" +
+"  \n" +
+"inicio\n" +
+"	escreva(\"Olá mundo!\")\n" +
+"	leia(x, y, z)\n" +
+"	para x de 10 ate 1 passo 1 decrescente faca\n" +
+"	   leia(x, y)\n" +
+"	   escreval(x, y)\n" +
+"	fimpara\n" +
+"	repita\n" +
+"	   escreva(x)\n" +
+"	   leia(x)\n" +
+"	   para x de 10 ate 1 passo 2 decrescente faca\n" +
+"	      escreva(\"X: \", x)\n" +
+"	   fimpara\n" +
+"	ate x > 10\n" +
+"	x <- 1\n" +
+"	enquanto x < 10 faca\n" +
+"	   x <- x + 1\n" +
+"	fimenquanto\n" +
+"	se x > 10 entao\n" +
+"	   escreva(\"X > 10\")\n" +
+"	senao\n" +
+"	   escreva(\"X <= 10\")\n" +
+"	fimse\n" +
+"	x <- 10\n" +
+"	escreva(\"Resultado para f(\", x, \", \", y, \", \",z, \"): \", f(x,y,z))\n" +
+"fimalgoritmo");
         
         //VALIDAR O TEXT AREA
         textArea.revalidate();
@@ -117,25 +270,37 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Propriedades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Propriedades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Propriedades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Propriedades.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TelaPrincipal().setVisible(true);
+                new Propriedades().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton AplicarPropriedades1;
+    private javax.swing.JButton CancelarPropriedades;
+    private javax.swing.JComboBox<String> ChangeFontBox;
+    private javax.swing.JPanel Exampletext;
+    private javax.swing.JCheckBox Itálico;
+    private javax.swing.JLabel LabelFont1;
+    private javax.swing.JLabel LabelSize;
+    private javax.swing.JCheckBox Negrito;
+    private javax.swing.JComboBox<String> SizeBox;
+    private javax.swing.JCheckBox Sublinhado;
+    private javax.swing.JList<String> jList2;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

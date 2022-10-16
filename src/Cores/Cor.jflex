@@ -199,11 +199,14 @@ Identifier            = ({IdentifierStart}{IdentifierPart}*)
 %%   
    
 <YYINITIAL> {   
-   
+
    /* Keywords */   
    "do" |   
    "for" |   
-   "if" |   
+   "if" | 
+   "para" |
+   "fimrepita" | 
+   "enquanto" |  
    "while"      { addToken(Token.RESERVED_WORD); }   
    
    /* Data types */   

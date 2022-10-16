@@ -1,4 +1,6 @@
 
+
+import Teste.Propriedades;
 import java.awt.Font;
 import java.awt.BorderLayout;
 import javax.swing.table.DefaultTableModel;
@@ -112,8 +114,9 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuTreeView = new javax.swing.JMenuItem();
-        Stop = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        Configuracoes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("formPrincipal"); // NOI18N
@@ -170,18 +173,22 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuTreeView);
 
-        Stop.setText("Stop");
-        Stop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StopActionPerformed(evt);
-            }
-        });
-        jMenu2.add(Stop);
-
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Sobre");
         jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Configuracoes");
+
+        Configuracoes.setText("Propriedades");
+        Configuracoes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfiguracoesActionPerformed(evt);
+            }
+        });
+        jMenu4.add(Configuracoes);
+
+        jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
 
@@ -306,12 +313,15 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
-    private void StopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StopActionPerformed
-       
+    private void ConfiguracoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfiguracoesActionPerformed
+        Propriedades tela = new Propriedades();
+        tela.setTitle("Propriedades");
+        tela.setVisible(true);
+        tela.setLocationRelativeTo(null);
         
         
         
-    }//GEN-LAST:event_StopActionPerformed
+    }//GEN-LAST:event_ConfiguracoesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,11 +386,12 @@ public class FormPrincipal extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem Stop;
+    private javax.swing.JMenuItem Configuracoes;
     private javax.swing.JTabbedPane jMensagem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
