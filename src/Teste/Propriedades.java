@@ -117,6 +117,12 @@ public class Propriedades extends javax.swing.JFrame {
         LabelFont1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         LabelFont1.setText("Change Font");
 
+        SizeBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SizeBoxItemStateChanged(evt);
+            }
+        });
+
         ChangeFontBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ChangeFontBoxItemStateChanged(evt);
@@ -210,25 +216,58 @@ public class Propriedades extends javax.swing.JFrame {
     private void ChangeFontBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChangeFontBoxItemStateChanged
          if (evt.getStateChange() == ItemEvent.SELECTED) {
               String opcao = ChangeFontBox.getSelectedItem().toString();
-               
+               int tamanho=14;
+                if(SizeBox.getSelectedItem()!=null)
+                {
+                      System.out.println(""+SizeBox.getSelectedItem().toString());
+                      tamanho=Integer.parseInt(SizeBox.getSelectedItem().toString());
+                }
               
                 if (opcao.equals("VERDANA") == true) {
                     
-                     textArea.setFont(new Font("Verdana",Font.PLAIN,14));
+                     textArea.setFont(new Font("Verdana",Font.PLAIN,tamanho));
                 }
                 if (opcao.equals("SERIF") == true) {
                     
-                    textArea.setFont(new Font("Serif",Font.PLAIN,14));
+                    textArea.setFont(new Font("Serif",Font.PLAIN,tamanho));
                 }
                 if (opcao.equals("MONOSPACED") == true) {
                     
-                    textArea.setFont(new Font("Monospaced",Font.PLAIN,14));
+                    textArea.setFont(new Font("Monospaced",Font.PLAIN,tamanho));
                 }
                 
                 
               
          }
     }//GEN-LAST:event_ChangeFontBoxItemStateChanged
+
+    private void SizeBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SizeBoxItemStateChanged
+       if (evt.getStateChange() == ItemEvent.SELECTED) {
+              String opcao = SizeBox.getSelectedItem().toString();
+               String fonte="Verdana";
+                if(ChangeFontBox.getSelectedItem()!=null)
+                {
+                      System.out.println(""+ChangeFontBox.getSelectedItem().toString());
+                      fonte=SizeBox.getSelectedItem().toString();
+                }
+              
+                if (opcao.equals("14") == true) {
+                    
+                     textArea.setFont(new Font(fonte,Font.PLAIN,14));
+                }
+                if (opcao.equals("18") == true) {
+                    
+                    textArea.setFont(new Font(fonte,Font.PLAIN,18));
+                }
+                if (opcao.equals("24") == true) {
+                    
+                    textArea.setFont(new Font(fonte,Font.PLAIN,24));
+                }
+                
+                
+              
+         }
+    }//GEN-LAST:event_SizeBoxItemStateChanged
 
     public void RSyntax()
     {
