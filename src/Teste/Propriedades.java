@@ -6,6 +6,8 @@ package Teste;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ItemEvent;
+import javax.swing.DefaultListModel;
 import javax.swing.border.Border;
 import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -25,9 +27,31 @@ public class Propriedades extends javax.swing.JFrame {
      * Creates new form TelaPrincipal
      */
     RSyntaxTextArea textArea = new RSyntaxTextArea(20,60);
+    DefaultListModel DLM = new DefaultListModel();
     public Propriedades() {
         initComponents();
+        LISTAPRINCIPAL.setModel(DLM);
         
+        
+        DLM.addElement("COMENTARIO MULTILINHA");
+        DLM.addElement("STRING");
+        DLM.addElement("SEPARADOR");
+        DLM.addElement("LOGICO");
+        DLM.addElement("IDENTIFICADOR");
+        DLM.addElement("OPERADOR");
+        DLM.addElement("FUNCAO");
+        DLM.addElement("TIPOS DE DADOS");
+        ChangeFontBox.removeAllItems();
+        ChangeFontBox.addItem("VERDANA"); 
+        ChangeFontBox.addItem("SERIF"); 
+        ChangeFontBox.addItem("MONOSPACED");
+
+        
+        SizeBox.removeAllItems();
+        SizeBox.addItem("14");
+        SizeBox.addItem("18");
+        SizeBox.addItem("24");
+
         RSyntax();
     }
 
@@ -47,7 +71,7 @@ public class Propriedades extends javax.swing.JFrame {
         Sublinhado = new javax.swing.JCheckBox();
         Itálico = new javax.swing.JCheckBox();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        LISTAPRINCIPAL = new javax.swing.JList<>();
         LabelSize = new javax.swing.JLabel();
         LabelFont1 = new javax.swing.JLabel();
         SizeBox = new javax.swing.JComboBox<>();
@@ -74,12 +98,18 @@ public class Propriedades extends javax.swing.JFrame {
 
         Itálico.setText("Itálico");
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
+        LISTAPRINCIPAL.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        LISTAPRINCIPAL.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane2.setViewportView(jList2);
+        LISTAPRINCIPAL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LISTAPRINCIPALMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(LISTAPRINCIPAL);
 
         LabelSize.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         LabelSize.setText("Size");
@@ -87,9 +117,11 @@ public class Propriedades extends javax.swing.JFrame {
         LabelFont1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         LabelFont1.setText("Change Font");
 
-        SizeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        ChangeFontBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ChangeFontBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ChangeFontBoxItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,10 +202,38 @@ public class Propriedades extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SublinhadoActionPerformed
 
+    private void LISTAPRINCIPALMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LISTAPRINCIPALMouseClicked
+     String selecionado = LISTAPRINCIPAL.getSelectedValue(); 
+        System.out.println(""+selecionado);// TODO add your handling code here:
+    }//GEN-LAST:event_LISTAPRINCIPALMouseClicked
+
+    private void ChangeFontBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChangeFontBoxItemStateChanged
+         if (evt.getStateChange() == ItemEvent.SELECTED) {
+              String opcao = ChangeFontBox.getSelectedItem().toString();
+               
+              
+                if (opcao.equals("VERDANA") == true) {
+                    
+                     textArea.setFont(new Font("Verdana",Font.PLAIN,14));
+                }
+                if (opcao.equals("SERIF") == true) {
+                    
+                    textArea.setFont(new Font("Serif",Font.PLAIN,14));
+                }
+                if (opcao.equals("MONOSPACED") == true) {
+                    
+                    textArea.setFont(new Font("Monospaced",Font.PLAIN,14));
+                }
+                
+                
+              
+         }
+    }//GEN-LAST:event_ChangeFontBoxItemStateChanged
+
     public void RSyntax()
     {
         
-        textArea.setFont(new Font("Monospaced",Font.PLAIN,20));
+        textArea.setFont(new Font("Verdana",Font.PLAIN,14));
         
         //SYNTAX STYLE JAVA SE FOR UMA LINGUAGEM JA DEFINIDA
         //textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
@@ -191,7 +251,7 @@ public class Propriedades extends javax.swing.JFrame {
         }
         RTextScrollPane sp = new RTextScrollPane(textArea);
         sp.getGutter().setLineNumberColor(Color.RED);
-        sp.getGutter().setLineNumberFont(new Font("Monospaced",Font.BOLD,20));
+        sp.getGutter().setLineNumberFont(new Font("Monospaced",Font.BOLD,18));
         sp.getGutter().setBorderColor(Color.yellow);
         Exampletext.add(sp);
         
@@ -311,12 +371,12 @@ public class Propriedades extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ChangeFontBox;
     private javax.swing.JPanel Exampletext;
     private javax.swing.JCheckBox Itálico;
+    private javax.swing.JList<String> LISTAPRINCIPAL;
     private javax.swing.JLabel LabelFont1;
     private javax.swing.JLabel LabelSize;
     private javax.swing.JCheckBox Negrito;
     private javax.swing.JComboBox<String> SizeBox;
     private javax.swing.JCheckBox Sublinhado;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
