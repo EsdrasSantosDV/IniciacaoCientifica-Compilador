@@ -173,7 +173,7 @@ public class Propriedades extends javax.swing.JFrame {
     public void RSyntax()
     {
         
-        textArea.setFont(new Font("Monospaced",Font.BOLD,20));
+        textArea.setFont(new Font("Monospaced",Font.PLAIN,20));
         
         //SYNTAX STYLE JAVA SE FOR UMA LINGUAGEM JA DEFINIDA
         //textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
@@ -196,16 +196,32 @@ public class Propriedades extends javax.swing.JFrame {
         Exampletext.add(sp);
         
         //MUDAR A COR
-        
-        
+      
         SyntaxScheme esquema=textArea.getSyntaxScheme();
         //MUDAR O TEMA DE UM CERTO AGRUPAMENTO
         esquema.getStyle(Token.RESERVED_WORD).foreground=Color.BLACK;
-        esquema.getStyle(Token.COMMENT_MULTILINE).foreground=Color.decode("#A10C0C");
         
-
-        esquema.getStyle(Token.DATA_TYPE).foreground=Color.RED;
+        //COMENTARIO MULTILINHA /*
+        esquema.getStyle(Token.COMMENT_MULTILINE).foreground=Color.decode("#A10CCC");
       
+        //ESCREVA LEIA
+        esquema.getStyle(Token.FUNCTION).foreground=Color.BLUE;
+        //TODOS OS OPERADORES
+        esquema.getStyle(Token.OPERATOR).foreground=Color.PINK;
+        
+        //variaveis
+        esquema.getStyle(Token.DATA_TYPE).foreground=Color.YELLOW;
+        //SERIA OS LOGICOS
+        esquema.getStyle(Token.RESERVED_WORD_2).foreground=Color.CYAN;
+        //IDENTIFICADORES ,VARIAVEIS FUNCOES
+        esquema.getStyle(Token.IDENTIFIER).foreground=Color.red;
+       //seria os barras
+        esquema.getStyle(Token.SEPARATOR).foreground=Color.GRAY;
+        
+        //COR DO TEXTO
+        esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground=Color.GREEN;
+        
+         
         textArea.setText("/*\n" +
 "   Algoritmo de exemplo para teste de compilação\n" +
 "*/\n" +

@@ -201,26 +201,45 @@ Identifier            = ({IdentifierStart}{IdentifierPart}*)
 <YYINITIAL> {   
 
    /* Keywords */   
-   "do" |   
-   "for" |   
-   "if" | 
-   "para" |
-   "fimrepita" | 
-   "enquanto" |  
-   "while"      { addToken(Token.RESERVED_WORD); }   
-   
+   "algoritmo" |   
+   "inicio" |   
+   "fimalgoritmo" | 
+   "fimfuncao" | 
+   "var" |
+   "fimrepita" |
+   "fimpara" |  
+   "ate" | 
+   "repita" |  
+   "se" |
+   "fimse" |
+   "entao" |  
+   "procedimento" | 
+   "fimprocedimento" | 
+   "fimenquanto" | 
+   "para" | 
+   "passo" | 
+   "de" | 
+   "decrescente" | 
+   "crescente" | 
+   "senao" | 
+   "enquanto"      { addToken(Token.RESERVED_WORD); }    
+    
+  /* LOGICAL */   
+   "e" |   
+   "ou"      { addToken(Token.RESERVED_WORD_2); } 
+
+
    /* Data types */   
-   "byte" |   
-   "char" |   
-   "double" |   
-   "float" |   
-   "int"      { addToken(Token.DATA_TYPE); }   
-   
+   "caractere" |   
+   "inteiro" |    
+   "real"      { addToken(Token.DATA_TYPE); }  
+
+  
    /* Functions */   
-   "fopen" |   
-   "fread" |   
-   "printf" |   
-   "scanf"      { addToken(Token.FUNCTION); }   
+   "escreva" |   
+   "leia" |   
+   "escreval"      { addToken(Token.FUNCTION); }  
+
    
    {Identifier}            { addToken(Token.IDENTIFIER); }   
    
@@ -242,10 +261,9 @@ Identifier            = ({IdentifierStart}{IdentifierPart}*)
    {Separator}               { addToken(Token.SEPARATOR); }   
    {Separator2}            { addToken(Token.IDENTIFIER); }   
    
-   /* Operators. */   
-   "!" | "%" | "%=" | "&" | "&&" | "*" | "*=" | "+" | "++" | "+=" | "," | "-" | "--" | "-=" |   
-   "/" | "/=" | ":" | "<" | "<<" | "<<=" | "=" | "==" | ">" | ">>" | ">>=" | "?" | "^" | "|" |   
-   "||" | "~"      { addToken(Token.OPERATOR); }   
+    /* Operators. */   
+   ":" | ";" | "<-" | "(" | ")" | "," | "=" | ">" | ">=" | "<" | "<=" | "<>" | "*" | "/" |   
+   "+" | "-"      { addToken(Token.OPERATOR); }   
    
    /* Numbers */   
    {IntegerLiteral}         { addToken(Token.LITERAL_NUMBER_DECIMAL_INT); }   
