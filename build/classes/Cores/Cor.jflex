@@ -219,6 +219,7 @@ Identifier            = ({IdentifierStart}{IdentifierPart}*)
    "para" | 
    "passo" | 
    "de" | 
+   "faca" | 
    "decrescente" | 
    "crescente" | 
    "senao" | 

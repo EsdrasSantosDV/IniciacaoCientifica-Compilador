@@ -8,6 +8,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import javax.swing.DefaultListModel;
+import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -27,6 +29,7 @@ public class Propriedades extends javax.swing.JFrame {
      * Creates new form TelaPrincipal
      */
     RSyntaxTextArea textArea = new RSyntaxTextArea(20,60);
+    private Color Color;
     DefaultListModel DLM = new DefaultListModel();
     public Propriedades() {
         initComponents();
@@ -41,6 +44,7 @@ public class Propriedades extends javax.swing.JFrame {
         DLM.addElement("OPERADOR");
         DLM.addElement("FUNCAO");
         DLM.addElement("TIPOS DE DADOS");
+       
         ChangeFontBox.removeAllItems();
         ChangeFontBox.addItem("VERDANA"); 
         ChangeFontBox.addItem("SERIF"); 
@@ -76,6 +80,10 @@ public class Propriedades extends javax.swing.JFrame {
         LabelFont1 = new javax.swing.JLabel();
         SizeBox = new javax.swing.JComboBox<>();
         ChangeFontBox = new javax.swing.JComboBox<>();
+        BackgroudInp = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        ForegroudInp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,11 +107,6 @@ public class Propriedades extends javax.swing.JFrame {
         Itálico.setText("Itálico");
 
         LISTAPRINCIPAL.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        LISTAPRINCIPAL.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         LISTAPRINCIPAL.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 LISTAPRINCIPALMouseClicked(evt);
@@ -129,6 +132,28 @@ public class Propriedades extends javax.swing.JFrame {
             }
         });
 
+        BackgroudInp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BackgroudInp.setText("Change Color");
+        BackgroudInp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BackgroudInpActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("Set Background");
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setText("Set Foreground");
+
+        ForegroudInp.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        ForegroudInp.setText("Change Color");
+        ForegroudInp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ForegroudInpActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,6 +168,10 @@ public class Propriedades extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35)
+                                .addComponent(BackgroudInp, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(Itálico)
@@ -164,6 +193,16 @@ public class Propriedades extends javax.swing.JFrame {
                 .addGap(70, 70, 70)
                 .addComponent(CancelarPropriedades, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(327, 327, 327)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(438, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(495, Short.MAX_VALUE)
+                    .addComponent(ForegroudInp, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(181, 181, 181)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +212,7 @@ public class Propriedades extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelFont1)
-                            .addComponent(ChangeFontBox, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
+                            .addComponent(ChangeFontBox))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(4, 4, 4))
@@ -186,10 +225,13 @@ public class Propriedades extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(SizeBox)
-                                .addGap(68, 68, 68)))
+                                .addGap(81, 81, 81)))
                         .addComponent(Negrito)
                         .addGap(18, 18, 18)
-                        .addComponent(Itálico)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Itálico)
+                            .addComponent(jLabel1)
+                            .addComponent(BackgroudInp, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(Sublinhado)))
                 .addGap(44, 44, 44)
@@ -199,6 +241,16 @@ public class Propriedades extends javax.swing.JFrame {
                     .addComponent(CancelarPropriedades, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AplicarPropriedades1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(98, 98, 98)
+                    .addComponent(jLabel2)
+                    .addContainerGap(584, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(87, 87, 87)
+                    .addComponent(ForegroudInp, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(573, Short.MAX_VALUE)))
         );
 
         pack();
@@ -209,8 +261,7 @@ public class Propriedades extends javax.swing.JFrame {
     }//GEN-LAST:event_SublinhadoActionPerformed
 
     private void LISTAPRINCIPALMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LISTAPRINCIPALMouseClicked
-     String selecionado = LISTAPRINCIPAL.getSelectedValue(); 
-        System.out.println(""+selecionado);// TODO add your handling code here:
+   
     }//GEN-LAST:event_LISTAPRINCIPALMouseClicked
 
     private void ChangeFontBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ChangeFontBoxItemStateChanged
@@ -219,7 +270,7 @@ public class Propriedades extends javax.swing.JFrame {
                int tamanho=14;
                 if(SizeBox.getSelectedItem()!=null)
                 {
-                      System.out.println(""+SizeBox.getSelectedItem().toString());
+                   
                       tamanho=Integer.parseInt(SizeBox.getSelectedItem().toString());
                 }
               
@@ -247,7 +298,7 @@ public class Propriedades extends javax.swing.JFrame {
                String fonte="Verdana";
                 if(ChangeFontBox.getSelectedItem()!=null)
                 {
-                      System.out.println(""+ChangeFontBox.getSelectedItem().toString());
+                    
                       fonte=SizeBox.getSelectedItem().toString();
                 }
               
@@ -268,6 +319,245 @@ public class Propriedades extends javax.swing.JFrame {
               
          }
     }//GEN-LAST:event_SizeBoxItemStateChanged
+
+    private void ForegroudInpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ForegroudInpActionPerformed
+        String selecionado = LISTAPRINCIPAL.getSelectedValue();
+      
+        
+        if(selecionado==null)
+        {
+            JOptionPane.showMessageDialog(this,"Nao selecionou um Grupo");
+        }
+        else
+        {
+           System.out.println(""+selecionado);
+            try{
+            AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory)TokenMakerFactory.getDefaultInstance();
+            //nome da linguagem e O SEgundo parametro e o pacote das suas cores
+            atmf.putMapping("text/myLanguage", "Cores.Cor");
+            textArea.setSyntaxEditingStyle("text/myLanguage");
+            }
+             catch(Exception e)
+            {
+            
+            }
+
+            SyntaxScheme esquema=textArea.getSyntaxScheme();
+            Color=JColorChooser.showDialog(this, "Selecione a Cor", Color);
+
+            if(selecionado.equals("COMENTARIO MULTILINHA")==true)
+            {
+                //MUDAR O TEMA DE UM CERTO AGRUPAMENTO
+                 esquema.getStyle(Token.COMMENT_MULTILINE).foreground=Color;
+            }
+
+            if(selecionado.equals("STRING")==true)
+            {
+             
+                esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground=Color;
+            }
+             if(selecionado.equals("SEPARADOR")==true)
+            {
+              
+                esquema.getStyle(Token.SEPARATOR).foreground=Color;
+            }
+             if(selecionado.equals("LOGICO")==true)
+            {
+                 
+                esquema.getStyle(Token.RESERVED_WORD_2).foreground=Color;
+            }
+             if(selecionado.equals("IDENTIFICADOR")==true)
+            {
+               
+                esquema.getStyle(Token.IDENTIFIER).foreground=Color;
+            }
+             if(selecionado.equals("OPERADOR")==true)
+            {
+                
+                esquema.getStyle(Token.OPERATOR).foreground=Color;
+            }
+             if(selecionado.equals("FUNCAO")==true)
+            {
+                  //MUDAR O TEMA DE UM CERTO AGRUPAMENTO
+                
+                esquema.getStyle(Token.FUNCTION).foreground=Color;
+                
+            }
+             if(selecionado.equals("TIPOS DE DADOS")==true)
+            {
+               
+                esquema.getStyle(Token.DATA_TYPE).foreground=Color;
+                
+            }
+            textArea.setText("/*\n" +
+"   Algoritmo de exemplo para teste de compilação\n" +
+"*/\n" +
+"algoritmo \"exemplo\"\n" +
+"var\n" +
+"	x, y, z : inteiro\n" +
+"	w :	real\n" +
+"	\n" +
+"	funcao f(a, b : inteiro; c : real) : real  // Função f()\n" +
+"	inicio\n" +
+"	   f <- a * b * c\n" +
+"	fimfuncao\n" +
+"{ Comentário estilo Pascal\n" +
+"  ------------------------\n" +
+"}\n" +
+"  \n" +
+"inicio\n" +
+"	escreva(\"Olá mundo!\")\n" +
+"	leia(x, y, z)\n" +
+"	para x de 10 ate 1 passo 1 decrescente faca\n" +
+"	   leia(x, y)\n" +
+"	   escreval(x, y)\n" +
+"	fimpara\n" +
+"	repita\n" +
+"	   escreva(x)\n" +
+"	   leia(x)\n" +
+"	   para x de 10 ate 1 passo 2 decrescente faca\n" +
+"	      escreva(\"X: \", x)\n" +
+"	   fimpara\n" +
+"	ate x > 10\n" +
+"	x <- 1\n" +
+"	enquanto x < 10 faca\n" +
+"	   x <- x + 1\n" +
+"	fimenquanto\n" +
+"	se x > 10 entao\n" +
+"	   escreva(\"X > 10\")\n" +
+"	senao\n" +
+"	   escreva(\"X <= 10\")\n" +
+"	fimse\n" +
+"	x <- 10\n" +
+"	escreva(\"Resultado para f(\", x, \", \", y, \", \",z, \"): \", f(x,y,z))\n" +
+"fimalgoritmo");
+        
+            textArea.revalidate();
+        }
+        
+         
+        
+        
+    }//GEN-LAST:event_ForegroudInpActionPerformed
+
+    private void BackgroudInpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackgroudInpActionPerformed
+       String selecionado = LISTAPRINCIPAL.getSelectedValue();
+      
+        
+        if(selecionado==null)
+        {
+            JOptionPane.showMessageDialog(this,"Nao selecionou um Grupo");
+        }
+        else
+        {
+           System.out.println(""+selecionado);
+            try{
+            AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory)TokenMakerFactory.getDefaultInstance();
+            //nome da linguagem e O SEgundo parametro e o pacote das suas cores
+            atmf.putMapping("text/myLanguage", "Cores.Cor");
+            textArea.setSyntaxEditingStyle("text/myLanguage");
+            }
+             catch(Exception e)
+            {
+            
+            }
+
+            SyntaxScheme esquema=textArea.getSyntaxScheme();
+            Color=JColorChooser.showDialog(this, "Selecione a Cor", Color);
+
+            if(selecionado.equals("COMENTARIO MULTILINHA")==true)
+            {
+                //MUDAR O TEMA DE UM CERTO AGRUPAMENTO
+                 esquema.getStyle(Token.COMMENT_MULTILINE).background=Color;
+            }
+
+            if(selecionado.equals("STRING")==true)
+            {
+               
+                esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).background=Color;
+            }
+             if(selecionado.equals("SEPARADOR")==true)
+            {
+               
+                esquema.getStyle(Token.SEPARATOR).background=Color;
+            }
+             if(selecionado.equals("LOGICO")==true)
+            {
+                  
+                esquema.getStyle(Token.RESERVED_WORD_2).background=Color;
+            }
+             if(selecionado.equals("IDENTIFICADOR")==true)
+            {
+               
+                esquema.getStyle(Token.IDENTIFIER).background=Color;
+            }
+             if(selecionado.equals("OPERADOR")==true)
+            {
+               
+                esquema.getStyle(Token.OPERATOR).background=Color;
+            }
+             if(selecionado.equals("FUNCAO")==true)
+            {
+                
+               
+                esquema.getStyle(Token.FUNCTION).background=Color;
+                
+            }
+             if(selecionado.equals("TIPOS DE DADOS")==true)
+            {
+              
+                esquema.getStyle(Token.DATA_TYPE).background=Color;
+                
+            }
+            textArea.setText("/*\n" +
+"   Algoritmo de exemplo para teste de compilação\n" +
+"*/\n" +
+"algoritmo \"exemplo\"\n" +
+"var\n" +
+"	x, y, z : inteiro\n" +
+"	w :	real\n" +
+"	\n" +
+"	funcao f(a, b : inteiro; c : real) : real  // Função f()\n" +
+"	inicio\n" +
+"	   f <- a * b * c\n" +
+"	fimfuncao\n" +
+"{ Comentário estilo Pascal\n" +
+"  ------------------------\n" +
+"}\n" +
+"  \n" +
+"inicio\n" +
+"	escreva(\"Olá mundo!\")\n" +
+"	leia(x, y, z)\n" +
+"	para x de 10 ate 1 passo 1 decrescente faca\n" +
+"	   leia(x, y)\n" +
+"	   escreval(x, y)\n" +
+"	fimpara\n" +
+"	repita\n" +
+"	   escreva(x)\n" +
+"	   leia(x)\n" +
+"	   para x de 10 ate 1 passo 2 decrescente faca\n" +
+"	      escreva(\"X: \", x)\n" +
+"	   fimpara\n" +
+"	ate x > 10\n" +
+"	x <- 1\n" +
+"	enquanto x < 10 faca\n" +
+"	   x <- x + 1\n" +
+"	fimenquanto\n" +
+"	se x > 10 entao\n" +
+"	   escreva(\"X > 10\")\n" +
+"	senao\n" +
+"	   escreva(\"X <= 10\")\n" +
+"	fimse\n" +
+"	x <- 10\n" +
+"	escreva(\"Resultado para f(\", x, \", \", y, \", \",z, \"): \", f(x,y,z))\n" +
+"fimalgoritmo");
+        
+            textArea.revalidate();
+        }
+        
+         
+        
+    }//GEN-LAST:event_BackgroudInpActionPerformed
 
     public void RSyntax()
     {
@@ -406,9 +696,11 @@ public class Propriedades extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AplicarPropriedades1;
+    private javax.swing.JButton BackgroudInp;
     private javax.swing.JButton CancelarPropriedades;
     private javax.swing.JComboBox<String> ChangeFontBox;
     private javax.swing.JPanel Exampletext;
+    private javax.swing.JButton ForegroudInp;
     private javax.swing.JCheckBox Itálico;
     private javax.swing.JList<String> LISTAPRINCIPAL;
     private javax.swing.JLabel LabelFont1;
@@ -416,6 +708,8 @@ public class Propriedades extends javax.swing.JFrame {
     private javax.swing.JCheckBox Negrito;
     private javax.swing.JComboBox<String> SizeBox;
     private javax.swing.JCheckBox Sublinhado;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
