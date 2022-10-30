@@ -7,6 +7,9 @@ package Teste;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import javax.swing.DefaultListModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
@@ -44,7 +47,7 @@ public class Propriedades extends javax.swing.JFrame {
         DLM.addElement("OPERADOR");
         DLM.addElement("FUNCAO");
         DLM.addElement("TIPOS DE DADOS");
-       
+
         ChangeFontBox.removeAllItems();
         ChangeFontBox.addItem("VERDANA"); 
         ChangeFontBox.addItem("SERIF"); 
@@ -96,6 +99,11 @@ public class Propriedades extends javax.swing.JFrame {
 
         AplicarPropriedades1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         AplicarPropriedades1.setText("Aplicar");
+        AplicarPropriedades1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AplicarPropriedades1ActionPerformed(evt);
+            }
+        });
 
         Sublinhado.setText("Sublinhado");
         Sublinhado.addActionListener(new java.awt.event.ActionListener() {
@@ -333,7 +341,6 @@ public class Propriedades extends javax.swing.JFrame {
            System.out.println(""+selecionado);
             try{
             AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory)TokenMakerFactory.getDefaultInstance();
-            //nome da linguagem e O SEgundo parametro e o pacote das suas cores
             atmf.putMapping("text/myLanguage", "Cores.Cor");
             textArea.setSyntaxEditingStyle("text/myLanguage");
             }
@@ -347,7 +354,7 @@ public class Propriedades extends javax.swing.JFrame {
 
             if(selecionado.equals("COMENTARIO MULTILINHA")==true)
             {
-                //MUDAR O TEMA DE UM CERTO AGRUPAMENTO
+            
                  esquema.getStyle(Token.COMMENT_MULTILINE).foreground=Color;
             }
 
@@ -558,6 +565,27 @@ public class Propriedades extends javax.swing.JFrame {
          
         
     }//GEN-LAST:event_BackgroudInpActionPerformed
+
+    private void AplicarPropriedades1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarPropriedades1ActionPerformed
+        setVisible(false);
+       System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+       String caminho=System.getProperty("user.dir");
+       PrintWriter writer;
+    try {
+        
+       writer = new PrintWriter(caminho+"\\test1.txt", "UTF-8");
+       writer.println("Line 111111");
+       writer.println("line 22222");
+       writer.println("line 33333");
+       writer.println("line 44444");
+       writer.close();
+       System.out.println("finished");
+     } catch (Exception e) {
+       e.printStackTrace();
+     }
+    
+
+    }//GEN-LAST:event_AplicarPropriedades1ActionPerformed
 
     public void RSyntax()
     {
