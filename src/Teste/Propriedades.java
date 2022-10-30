@@ -567,22 +567,130 @@ public class Propriedades extends javax.swing.JFrame {
     }//GEN-LAST:event_BackgroudInpActionPerformed
 
     private void AplicarPropriedades1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarPropriedades1ActionPerformed
-        setVisible(false);
+       setVisible(false);
        System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
        String caminho=System.getProperty("user.dir");
        PrintWriter writer;
-    try {
-        
-       writer = new PrintWriter(caminho+"\\test1.txt", "UTF-8");
-       writer.println("Line 111111");
-       writer.println("line 22222");
-       writer.println("line 33333");
-       writer.println("line 44444");
-       writer.close();
-       System.out.println("finished");
-     } catch (Exception e) {
-       e.printStackTrace();
-     }
+       try {
+           writer = new PrintWriter(caminho+"\\propriedadesvisual\\propriedades.txt", "UTF-8");
+           //FONTE
+           writer.println(""+ChangeFontBox.getSelectedItem().toString());
+           //TAMANHO DA FONTE
+           writer.println(""+SizeBox.getSelectedItem().toString());
+           
+           
+           SyntaxScheme esquema=textArea.getSyntaxScheme();
+           int r=0;
+           int g =0;
+           int b=0;
+           String hexback="";
+           String hexfore="";
+           
+           r = esquema.getStyle(Token.COMMENT_MULTILINE).background.getRed();
+           g = esquema.getStyle(Token.COMMENT_MULTILINE).background.getGreen();
+           b = esquema.getStyle(Token.COMMENT_MULTILINE).background.getBlue();
+           hexback = String.format("#%02X%02X%02X", r, g, b);
+           
+           r = esquema.getStyle(Token.COMMENT_MULTILINE).foreground.getRed();
+           g = esquema.getStyle(Token.COMMENT_MULTILINE).foreground.getGreen();
+           b = esquema.getStyle(Token.COMMENT_MULTILINE).foreground.getBlue();
+           hexfore = String.format("#%02X%02X%02X", r, g, b);
+           
+           writer.println("COMMENT_MULTILINE"+","+hexback+","+hexfore);
+           
+           r = esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).background.getRed();
+           g = esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).background.getGreen();
+           b = esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).background.getBlue();
+           hexback = String.format("#%02X%02X%02X", r, g, b);
+           
+           r = esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground.getRed();
+           g = esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground.getGreen();
+           b = esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground.getBlue();
+           hexfore = String.format("#%02X%02X%02X", r, g, b);
+           
+           writer.println("LITERAL_STRING_DOUBLE_QUOTE"+","+hexback+","+hexfore);
+           
+           r = esquema.getStyle(Token.SEPARATOR).background.getRed();
+           g = esquema.getStyle(Token.SEPARATOR).background.getGreen();
+           b = esquema.getStyle(Token.SEPARATOR).background.getBlue();
+           hexback = String.format("#%02X%02X%02X", r, g, b);
+           
+           r = esquema.getStyle(Token.SEPARATOR).foreground.getRed();
+           g = esquema.getStyle(Token.SEPARATOR).foreground.getGreen();
+           b = esquema.getStyle(Token.SEPARATOR).foreground.getBlue();
+           hexfore = String.format("#%02X%02X%02X", r, g, b);
+           
+           writer.println("SEPARATOR"+","+hexback+","+hexfore);
+           
+           r = esquema.getStyle(Token.RESERVED_WORD_2).background.getRed();
+           g = esquema.getStyle(Token.RESERVED_WORD_2).background.getGreen();
+           b = esquema.getStyle(Token.RESERVED_WORD_2).background.getBlue();
+           hexback = String.format("#%02X%02X%02X", r, g, b);
+           
+           r = esquema.getStyle(Token.RESERVED_WORD_2).foreground.getRed();
+           g = esquema.getStyle(Token.RESERVED_WORD_2).foreground.getGreen();
+           b = esquema.getStyle(Token.RESERVED_WORD_2).foreground.getBlue();
+           hexfore = String.format("#%02X%02X%02X", r, g, b);
+           
+           writer.println("RESERVED_WORD_2"+","+hexback+","+hexfore);
+           
+          r = esquema.getStyle(Token.IDENTIFIER).background.getRed();
+           g = esquema.getStyle(Token.IDENTIFIER).background.getGreen();
+           b = esquema.getStyle(Token.IDENTIFIER).background.getBlue();
+           hexback = String.format("#%02X%02X%02X", r, g, b);
+           
+           r = esquema.getStyle(Token.IDENTIFIER).foreground.getRed();
+           g = esquema.getStyle(Token.IDENTIFIER).foreground.getGreen();
+           b = esquema.getStyle(Token.IDENTIFIER).foreground.getBlue();
+           hexfore = String.format("#%02X%02X%02X", r, g, b);
+           
+           writer.println("IDENTIFIER"+","+hexback+","+hexfore);
+           
+           
+            r = esquema.getStyle(Token.OPERATOR).background.getRed();
+           g = esquema.getStyle(Token.OPERATOR).background.getGreen();
+           b = esquema.getStyle(Token.OPERATOR).background.getBlue();
+           hexback = String.format("#%02X%02X%02X", r, g, b);
+           
+           r = esquema.getStyle(Token.OPERATOR).foreground.getRed();
+           g = esquema.getStyle(Token.OPERATOR).foreground.getGreen();
+           b = esquema.getStyle(Token.OPERATOR).foreground.getBlue();
+           hexfore = String.format("#%02X%02X%02X", r, g, b);
+           
+           writer.println("OPERATOR"+","+hexback+","+hexfore);
+           
+           
+           r = esquema.getStyle(Token.FUNCTION).background.getRed();
+           g = esquema.getStyle(Token.FUNCTION).background.getGreen();
+           b = esquema.getStyle(Token.FUNCTION).background.getBlue();
+           hexback = String.format("#%02X%02X%02X", r, g, b);
+           
+           r = esquema.getStyle(Token.FUNCTION).foreground.getRed();
+           g = esquema.getStyle(Token.FUNCTION).foreground.getGreen();
+           b = esquema.getStyle(Token.FUNCTION).foreground.getBlue();
+           hexfore = String.format("#%02X%02X%02X", r, g, b);
+           
+           writer.println("FUNCTION"+","+hexback+","+hexfore);
+           
+           
+            r = esquema.getStyle(Token.DATA_TYPE).background.getRed();
+           g = esquema.getStyle(Token.DATA_TYPE).background.getGreen();
+           b = esquema.getStyle(Token.DATA_TYPE).background.getBlue();
+           hexback = String.format("#%02X%02X%02X", r, g, b);
+           
+           r = esquema.getStyle(Token.DATA_TYPE).foreground.getRed();
+           g = esquema.getStyle(Token.DATA_TYPE).foreground.getGreen();
+           b = esquema.getStyle(Token.DATA_TYPE).foreground.getBlue();
+           hexfore = String.format("#%02X%02X%02X", r, g, b);
+           
+           writer.println("DATA_TYPE"+","+hexback+","+hexfore);
+           
+           
+           writer.close();
+          
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
     
 
     }//GEN-LAST:event_AplicarPropriedades1ActionPerformed
@@ -618,25 +726,39 @@ public class Propriedades extends javax.swing.JFrame {
         //MUDAR O TEMA DE UM CERTO AGRUPAMENTO
         esquema.getStyle(Token.RESERVED_WORD).foreground=Color.BLACK;
         
-        //COMENTARIO MULTILINHA /*
-        esquema.getStyle(Token.COMMENT_MULTILINE).foreground=Color.decode("#A10CCC");
-      
-        //ESCREVA LEIA
-        esquema.getStyle(Token.FUNCTION).foreground=Color.BLUE;
-        //TODOS OS OPERADORES
-        esquema.getStyle(Token.OPERATOR).foreground=Color.PINK;
         
-        //variaveis
-        esquema.getStyle(Token.DATA_TYPE).foreground=Color.YELLOW;
-        //SERIA OS LOGICOS
-        esquema.getStyle(Token.RESERVED_WORD_2).foreground=Color.CYAN;
-        //IDENTIFICADORES ,VARIAVEIS FUNCOES
-        esquema.getStyle(Token.IDENTIFIER).foreground=Color.red;
-       //seria os barras
-        esquema.getStyle(Token.SEPARATOR).foreground=Color.GRAY;
         
-        //COR DO TEXTO
-        esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground=Color.GREEN;
+       
+        //PADRAO
+        esquema.getStyle(Token.COMMENT_MULTILINE).background = Color.decode("#FFFFFF");
+
+        esquema.getStyle(Token.COMMENT_MULTILINE).foreground = Color.decode("#000000");
+
+        esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).background = Color.decode("#FFFFFF");
+        esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground = Color.decode("#000000");
+
+        esquema.getStyle(Token.SEPARATOR).background = Color.decode("#FFFFFF");
+        esquema.getStyle(Token.SEPARATOR).foreground = Color.decode("#000000");
+
+        esquema.getStyle(Token.RESERVED_WORD_2).background = Color.decode("#FFFFFF");
+
+        esquema.getStyle(Token.RESERVED_WORD_2).foreground = Color.decode("#000000");
+
+        esquema.getStyle(Token.IDENTIFIER).background = Color.decode("#FFFFFF");
+
+        esquema.getStyle(Token.IDENTIFIER).foreground = Color.decode("#000000");
+
+        esquema.getStyle(Token.OPERATOR).background = Color.decode("#FFFFFF");
+
+        esquema.getStyle(Token.OPERATOR).foreground = Color.decode("#000000");
+
+        esquema.getStyle(Token.FUNCTION).background = Color.decode("#FFFFFF");
+
+        esquema.getStyle(Token.FUNCTION).foreground = Color.decode("#000000");
+
+        esquema.getStyle(Token.DATA_TYPE).background = Color.decode("#FFFFFF");
+
+        esquema.getStyle(Token.DATA_TYPE).foreground = Color.decode("#000000");
         
          
         textArea.setText("/*\n" +
