@@ -1,15 +1,15 @@
 
-
 import Teste.Propriedades;
 import java.awt.Font;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.JDialog;
-import java.awt.FlowLayout; 
+import java.awt.FlowLayout;
 import javax.swing.JScrollPane;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
@@ -29,7 +29,15 @@ import java.io.File;
 import java.io.Writer;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import org.fife.ui.rsyntaxtextarea.AbstractTokenMakerFactory;
+import org.fife.ui.rsyntaxtextarea.SyntaxScheme;
+import org.fife.ui.rsyntaxtextarea.TokenMakerFactory;
 
+import org.fife.ui.rsyntaxtextarea.Token;
+import org.fife.ui.rsyntaxtextarea.TokenMakerFactory;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -42,56 +50,51 @@ import java.io.OutputStreamWriter;
  * @author roger
  */
 public class FormPrincipal extends javax.swing.JFrame {
+
     final JFileChooser fileChooser = new JFileChooser();
 
     //public static FormPrincipal formPrincipal;
-    
-    
     private File fileToCompile = null;  // Arquivo em edição
     private boolean isModified = false; // Sinaliza se o arquivo em edição foi modificado 
-    
+
     private DefaultTableModel modelo;
     private RTextScrollPane spFonte;
     private RTextScrollPane spAssembly;
     private RTextScrollPane spMensagem;
     private RSyntaxTextArea txtFonte;
     public static RSyntaxTextArea txtMensagem;
-    
+    private Color Color;
     private DefaultTableModel modeloMensagens = null;
 
     private static final int FONT_STYLE = Font.PLAIN;
     private static final int FONT_SIZE = 12;
     private static final String DEFAULT_FONT = "Wingdings";
-    
+
     /**
      * Creates new form FormPrincipal
      */
     public FormPrincipal() {
         initComponents();
-        
-        setExtendedState(getExtendedState()|JFrame.MAXIMIZED_BOTH);        
-        
-        txtFonte = new RSyntaxTextArea(20,60);
+
+        setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+
+        txtFonte = new RSyntaxTextArea(20, 60);
         txtFonte.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_DELPHI);
         txtFonte.setCodeFoldingEnabled(true);
-        
-        
 
         spFonte = new RTextScrollPane(txtFonte);
         spFonte.setName("Programa Fonte");
-        jPainel.add(spFonte, 0);
-        
-        txtMensagem = new RSyntaxTextArea(20,60);
+        Exampletext.add(spFonte, 0);
+
+        txtMensagem = new RSyntaxTextArea(20, 60);
         //txtMensagem.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_DELPHI);
         txtMensagem.setCodeFoldingEnabled(true);
         spMensagem = new RTextScrollPane(txtMensagem);
         spMensagem.setName("Mensagens");
         jMensagem.add(spMensagem, 0);
-//        jPainelMensagem.add(spMensagem);
-        
-        jPainel.setSelectedIndex(0);
+        Exampletext.setSelectedIndex(0);
 
-
+        RSyntax();
     }
 
     /**
@@ -103,7 +106,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPainel = new javax.swing.JTabbedPane();
+        Exampletext = new javax.swing.JTabbedPane();
         jMensagem = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -117,6 +120,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         Configuracoes = new javax.swing.JMenuItem();
+        Propriedades = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("formPrincipal"); // NOI18N
@@ -188,6 +192,14 @@ public class FormPrincipal extends javax.swing.JFrame {
         });
         jMenu4.add(Configuracoes);
 
+        Propriedades.setText("Atribuir Propriedades");
+        Propriedades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PropriedadesActionPerformed(evt);
+            }
+        });
+        jMenu4.add(Propriedades);
+
         jMenuBar1.add(jMenu4);
 
         setJMenuBar(jMenuBar1);
@@ -196,13 +208,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPainel, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
+            .addComponent(Exampletext, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
             .addComponent(jMensagem)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPainel, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+                .addComponent(Exampletext, javax.swing.GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jMensagem, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -212,9 +224,9 @@ public class FormPrincipal extends javax.swing.JFrame {
 
     private void jOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jOpenActionPerformed
         // TODO add your handling code here:
-        
+
         int returnVal = fileChooser.showOpenDialog(this);
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
             fileToCompile = fileChooser.getSelectedFile();
             BufferedReader r;
             try {
@@ -229,7 +241,6 @@ public class FormPrincipal extends javax.swing.JFrame {
             } catch (Exception e) {         // Never happens
                 JDialog dialog = new JDialog(this, "Não foi possível abrir o arquivo!");
             }
-
 
         }
     }//GEN-LAST:event_jOpenActionPerformed
@@ -256,47 +267,41 @@ public class FormPrincipal extends javax.swing.JFrame {
         System.out.println(parser.toString());
         
         txtMensagem.setText(obj.toString());
-*/
+         */
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jMenuTreeViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTreeViewActionPerformed
         // TODO add your handling code here:
         if (fileToCompile == null) {
             int userSelection = fileChooser.showSaveDialog(this);
-            if (userSelection == JFileChooser.APPROVE_OPTION) {            
+            if (userSelection == JFileChooser.APPROVE_OPTION) {
                 fileToCompile = fileChooser.getSelectedFile();
+            } else {
+                return;
             }
-            else
-                return;    
         }
         // Salva o arquivo em edição
         if (saveAs(fileToCompile)) {
             Compilador parser = new Compilador(fileToCompile);
             parser.parse();
-        }
-        else {
+        } else {
             JDialog dialog = new JDialog(this, "Não foi possível salvar o arquivo a ser compilado!");
-        } 
-            
-            
-                
+        }
+
+
     }//GEN-LAST:event_jMenuTreeViewActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-      
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        
+
         int userSelection = fileChooser.showSaveDialog(this);
- 
-        if (userSelection == JFileChooser.APPROVE_OPTION) {            
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
             fileToCompile = fileChooser.getSelectedFile();
             saveAs(fileToCompile);
         }
@@ -305,8 +310,8 @@ public class FormPrincipal extends javax.swing.JFrame {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         int userSelection = fileChooser.showSaveDialog(this);
- 
-        if (userSelection == JFileChooser.APPROVE_OPTION) {            
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
             fileToCompile = fileChooser.getSelectedFile();
             saveAs(fileToCompile);
             txtFonte.setText("");
@@ -318,10 +323,13 @@ public class FormPrincipal extends javax.swing.JFrame {
         tela.setTitle("Propriedades");
         tela.setVisible(true);
         tela.setLocationRelativeTo(null);
-        
-        
-        
+
+
     }//GEN-LAST:event_ConfiguracoesActionPerformed
+
+    private void PropriedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropriedadesActionPerformed
+         RSyntax();
+    }//GEN-LAST:event_PropriedadesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,7 +368,7 @@ public class FormPrincipal extends javax.swing.JFrame {
 //        formPrincipal = new FormPrincipal();
 //        formPrincipal.setVisible(true);
     }
-    
+
     public boolean saveAs(File file) {
         Writer out = null;
         try {
@@ -382,11 +390,12 @@ public class FormPrincipal extends javax.swing.JFrame {
         }
         return false;
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Configuracoes;
+    private javax.swing.JTabbedPane Exampletext;
+    private javax.swing.JMenuItem Propriedades;
     private javax.swing.JTabbedPane jMensagem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -398,7 +407,123 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuTreeView;
     private javax.swing.JMenuItem jOpen;
-    private javax.swing.JTabbedPane jPainel;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
+
+    private void RSyntax() {
+
+        try {
+            AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory) TokenMakerFactory.getDefaultInstance();
+            //nome da linguagem e O SEgundo parametro e o pacote das suas cores
+            atmf.putMapping("text/myLanguage", "Cores.Cor");
+            txtFonte.setSyntaxEditingStyle("text/myLanguage");
+        } catch (Exception e) {
+
+        }
+    
+        String caminho = System.getProperty("user.dir") + "\\propriedadesvisual\\propriedades.txt";
+
+        SyntaxScheme esquema = txtFonte.getSyntaxScheme();
+        try {
+
+            BufferedReader br = null;
+            FileReader fr = null;
+            fr = new FileReader(caminho);
+            br = new BufferedReader(fr);
+            String sCurrentLine = "";
+
+            String textodaFonte = "";
+            int tamanhodafonte = 0;
+            int i = 0;
+            while ((sCurrentLine = br.readLine()) != null) {
+                // System.out.println(sCurrentLine);
+                if (i == 0) {
+                    textodaFonte = sCurrentLine;
+                }
+                if (i == 1) {
+                    tamanhodafonte = Integer.parseInt(sCurrentLine);
+                }
+
+                //COMMENT MULTILINE
+                if (i == 2) {
+                    String aux[] = sCurrentLine.split(",");
+                    List<String> pecorrer = Arrays.asList(aux);
+                    esquema.getStyle(Token.COMMENT_MULTILINE).background = Color.decode(pecorrer.get(1));
+
+                    esquema.getStyle(Token.COMMENT_MULTILINE).foreground = Color.decode(pecorrer.get(2));
+
+                }
+
+                if (i == 3) {
+                    String aux[] = sCurrentLine.split(",");
+                    List<String> pecorrer = Arrays.asList(aux);
+                    esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).background = Color.decode(pecorrer.get(1));
+                    esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground = Color.decode(pecorrer.get(2));
+
+                }
+
+                if (i == 4) {
+                    String aux[] = sCurrentLine.split(",");
+                    List<String> pecorrer = Arrays.asList(aux);
+                    esquema.getStyle(Token.SEPARATOR).background = Color.decode(pecorrer.get(1));
+                    esquema.getStyle(Token.SEPARATOR).foreground = Color.decode(pecorrer.get(2));
+                }
+
+                if (i == 5) {
+                    String aux[] = sCurrentLine.split(",");
+                    List<String> pecorrer = Arrays.asList(aux);
+                    esquema.getStyle(Token.RESERVED_WORD_2).background = Color.decode(pecorrer.get(1));
+                    esquema.getStyle(Token.RESERVED_WORD_2).foreground = Color.decode(pecorrer.get(2));
+
+                }
+
+                if (i == 6) {
+                    String aux[] = sCurrentLine.split(",");
+                    List<String> pecorrer = Arrays.asList(aux);
+
+                    esquema.getStyle(Token.IDENTIFIER).background = Color.decode(pecorrer.get(1));
+
+                    esquema.getStyle(Token.IDENTIFIER).foreground = Color.decode(pecorrer.get(2));
+
+                }
+
+                if (i == 7) {
+                    String aux[] = sCurrentLine.split(",");
+                    List<String> pecorrer = Arrays.asList(aux);
+
+                    esquema.getStyle(Token.OPERATOR).background = Color.decode(pecorrer.get(1));
+
+                    esquema.getStyle(Token.OPERATOR).foreground = Color.decode(pecorrer.get(2));
+
+                }
+
+                if (i == 8) {
+                    String aux[] = sCurrentLine.split(",");
+                    List<String> pecorrer = Arrays.asList(aux);
+
+                    esquema.getStyle(Token.FUNCTION).background = Color.decode(pecorrer.get(1));
+
+                    esquema.getStyle(Token.FUNCTION).foreground = Color.decode(pecorrer.get(2));
+
+                }
+
+                if (i == 9) {
+                    String aux[] = sCurrentLine.split(",");
+                    List<String> pecorrer = Arrays.asList(aux);
+
+                    esquema.getStyle(Token.DATA_TYPE).background = Color.decode(pecorrer.get(1));
+
+                    esquema.getStyle(Token.DATA_TYPE).foreground = Color.decode(pecorrer.get(2));
+
+                }
+
+                i++;
+            }
+            txtFonte.setFont(new Font(textodaFonte, Font.PLAIN, tamanhodafonte));
+            txtFonte.revalidate();
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

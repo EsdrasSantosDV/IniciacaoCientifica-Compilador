@@ -94,6 +94,11 @@ public class Propriedades extends javax.swing.JFrame {
 
         CancelarPropriedades.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         CancelarPropriedades.setText("Cancelar");
+        CancelarPropriedades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarPropriedadesActionPerformed(evt);
+            }
+        });
 
         Negrito.setText("Negrito");
 
@@ -338,7 +343,7 @@ public class Propriedades extends javax.swing.JFrame {
         }
         else
         {
-           System.out.println(""+selecionado);
+          
             try{
             AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory)TokenMakerFactory.getDefaultInstance();
             atmf.putMapping("text/myLanguage", "Cores.Cor");
@@ -457,7 +462,7 @@ public class Propriedades extends javax.swing.JFrame {
         }
         else
         {
-           System.out.println(""+selecionado);
+           
             try{
             AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory)TokenMakerFactory.getDefaultInstance();
             //nome da linguagem e O SEgundo parametro e o pacote das suas cores
@@ -568,7 +573,7 @@ public class Propriedades extends javax.swing.JFrame {
 
     private void AplicarPropriedades1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AplicarPropriedades1ActionPerformed
        setVisible(false);
-       System.out.println("Present Project Directory : "+ System.getProperty("user.dir"));
+      
        String caminho=System.getProperty("user.dir");
        PrintWriter writer;
        try {
@@ -695,15 +700,16 @@ public class Propriedades extends javax.swing.JFrame {
 
     }//GEN-LAST:event_AplicarPropriedades1ActionPerformed
 
+    private void CancelarPropriedadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarPropriedadesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CancelarPropriedadesActionPerformed
+
     public void RSyntax()
     {
         
         textArea.setFont(new Font("Verdana",Font.PLAIN,14));
         
-        //SYNTAX STYLE JAVA SE FOR UMA LINGUAGEM JA DEFINIDA
-        //textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         
-        //PARA UMA LINGUAGEM PROPRIA COMO A NOSSA
         try{
             AbstractTokenMakerFactory atmf = (AbstractTokenMakerFactory)TokenMakerFactory.getDefaultInstance();
             //nome da linguagem e O SEgundo parametro e o pacote das suas cores
@@ -732,21 +738,21 @@ public class Propriedades extends javax.swing.JFrame {
         //PADRAO
         esquema.getStyle(Token.COMMENT_MULTILINE).background = Color.decode("#FFFFFF");
 
-        esquema.getStyle(Token.COMMENT_MULTILINE).foreground = Color.decode("#000000");
+        esquema.getStyle(Token.COMMENT_MULTILINE).foreground = Color.decode("#00FFFF");
 
         esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).background = Color.decode("#FFFFFF");
         esquema.getStyle(Token.LITERAL_STRING_DOUBLE_QUOTE).foreground = Color.decode("#000000");
 
         esquema.getStyle(Token.SEPARATOR).background = Color.decode("#FFFFFF");
-        esquema.getStyle(Token.SEPARATOR).foreground = Color.decode("#000000");
+        esquema.getStyle(Token.SEPARATOR).foreground = Color.decode("#800080");
 
         esquema.getStyle(Token.RESERVED_WORD_2).background = Color.decode("#FFFFFF");
 
-        esquema.getStyle(Token.RESERVED_WORD_2).foreground = Color.decode("#000000");
+        esquema.getStyle(Token.RESERVED_WORD_2).foreground = Color.decode("#000080");
 
         esquema.getStyle(Token.IDENTIFIER).background = Color.decode("#FFFFFF");
 
-        esquema.getStyle(Token.IDENTIFIER).foreground = Color.decode("#000000");
+        esquema.getStyle(Token.IDENTIFIER).foreground = Color.decode("#FF0000");
 
         esquema.getStyle(Token.OPERATOR).background = Color.decode("#FFFFFF");
 
@@ -754,11 +760,11 @@ public class Propriedades extends javax.swing.JFrame {
 
         esquema.getStyle(Token.FUNCTION).background = Color.decode("#FFFFFF");
 
-        esquema.getStyle(Token.FUNCTION).foreground = Color.decode("#000000");
+        esquema.getStyle(Token.FUNCTION).foreground = Color.decode("#008000");
 
         esquema.getStyle(Token.DATA_TYPE).background = Color.decode("#FFFFFF");
 
-        esquema.getStyle(Token.DATA_TYPE).foreground = Color.decode("#000000");
+        esquema.getStyle(Token.DATA_TYPE).foreground = Color.decode("#FF00FF");
         
          
         textArea.setText("/*\n" +

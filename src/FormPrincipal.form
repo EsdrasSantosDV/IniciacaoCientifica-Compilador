@@ -81,6 +81,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfiguracoesActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="Propriedades">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Atribuir Propriedades"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PropriedadesActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -110,14 +118,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPainel" alignment="0" pref="476" max="32767" attributes="0"/>
+          <Component id="Exampletext" alignment="0" pref="476" max="32767" attributes="0"/>
           <Component id="jMensagem" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPainel" pref="174" max="32767" attributes="0"/>
+              <Component id="Exampletext" pref="174" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jMensagem" min="-2" pref="128" max="-2" attributes="0"/>
           </Group>
@@ -125,7 +133,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="jPainel">
+    <Container class="javax.swing.JTabbedPane" name="Exampletext">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
     </Container>
